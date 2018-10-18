@@ -15,7 +15,8 @@ class HDUCAS {
         if (phpCAS::isAuthenticated()) {
             $user = phpCAS::getUser();
             $_SESSION['user'] = $user;
-            echo eval('echo "'.file_get_contents(dirname(__FILE__).'/html/content.phml').'";');
+            require(dirname(__FILE__).'/html/content.phml');
+            //echo eval('echo "'.file_get_contents(dirname(__FILE__).'/html/content.phml').'";');
         }
         else {
             phpCAS::forceAuthentication();
@@ -45,5 +46,5 @@ else if (@$_REQUEST['act'] == 'login') {
 	$cas->CASLogin();
 }
 else {
-    echo file_get_contents(dirname(__FILE__).'/html/index.phml');
+    require(dirname(__FILE__).'/html/index.phml');
 }

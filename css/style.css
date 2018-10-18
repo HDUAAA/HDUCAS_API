@@ -51,14 +51,15 @@ body {
 	height:400px;
 	top: calc(50% - 200px);
 	left: calc(50% - 180px);
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.5);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 	overflow: hidden;
 	box-sizing: border-box;
 }
-.login-container::before{
+.login-container:before{
 	content: "";
+	background-color: rgba(0,0,0,0.5);
 	position: absolute;
 	top: 0px;left: 0px;right: 0px;bottom: 0px;z-index: -1;
 	-webkit-filter: blur(3px);

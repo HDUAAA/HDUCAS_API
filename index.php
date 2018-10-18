@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE); 
+//error_reporting(E_ALL ^ E_NOTICE); 
 class HDUCAS {
 
     /**
@@ -12,11 +12,12 @@ class HDUCAS {
         phpCAS::client(CAS_VERSION_2_0, "cas.hdu.edu.cn", 80, "cas");
         phpCAS::setNoCasServerValidation();
         phpCAS::handleLogoutRequests();
-        if (phpCAS::isAuthenticated()) {     
+        if (phpCAS::isAuthenticated()) {  
             $user = phpCAS::getUser();
+            $attr = phpCAS::getAttributes();
+            var_dump($attr);
             $_SESSION['user'] = $user;
             require(dirname(__FILE__).'/html/ticket.phml');
-            //echo eval('echo "'.file_get_contents(dirname(__FILE__).'/html/content.phml').'";');
         }
         else {
             phpCAS::forceAuthentication();

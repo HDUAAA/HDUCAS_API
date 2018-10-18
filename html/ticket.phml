@@ -19,17 +19,17 @@
                 </button>
             </div>
             <header>
-                <h2 class="sp-patient-card__reason">Positive Screen</h2>:
-                <time>2017-09-03T15:51:59Z</time>
+                <h2 class="sp-patient-card__reason" style="margin-left:8px">票据信息：</h2>
+                <!--<time>2017-09-03T15:51:59Z</time>-->
             </header>
             <main class="sp-patient-card__pid">
                 <div class="sp-pid__elem">
                     <label class="sp-pid__label">姓名</label>
-                    <h4 class="sp-pid__detail">Doe, Jane</h4>
+                    <h4 class="sp-pid__detail">丁乃文</h4>
                 </div>
                 <div class="sp-pid__elem">
                     <label class="sp-pid__label">学号</label>
-                    <h4 class="sp-pid__detail">35</h4>
+                    <h4 class="sp-pid__detail"><?php echo $user?></h4>
                 </div>
                 <div class="sp-pid__elem">
                     <label class="sp-pid__label">性别</label>

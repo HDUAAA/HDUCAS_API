@@ -15,8 +15,7 @@ class HDUCAS {
         if (phpCAS::isAuthenticated()) {
             $user = phpCAS::getUser();
             $_SESSION['user'] = $user;
-          	//window.location.href="getUserInfo.php"；
-          	echo "当前用户名：".$user."<br><a href='./getUserInfo.php'>资料</a><br><a href='./index.php?act=logout' target='_self'>退出</a>";
+            echo eval('echo "'.file_get_contents(dirname(__FILE__).'/html/content.phml').'";');
         }
         else {
             phpCAS::forceAuthentication();

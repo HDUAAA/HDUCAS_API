@@ -53,7 +53,7 @@ body {
 	left: calc(50% - 180px);
 	background-color: rgba(0,0,0,0.2);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-	z-index: 100;
+	z-index: 1;
 	overflow: hidden;
 	box-sizing: border-box;
 }

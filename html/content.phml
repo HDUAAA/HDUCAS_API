@@ -1,1 +1,1 @@
-当前用户名：$user<br><a href='./getUserInfo.php'>资料</a><br><a href='./index.php?act=logout' target='_self'>退出</a>
+当前用户名：$user<br><a href='./api.php'>资料</a><br><a href='./index.php?act=logout' target='_self'>退出</a>

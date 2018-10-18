@@ -14,8 +14,8 @@ class HDUCAS {
         phpCAS::handleLogoutRequests();
         if (phpCAS::isAuthenticated()) {  
             $user = phpCAS::getUser();
-            $attr = phpCAS::getAttributes();
-            var_dump($attr);
+            //$attr = phpCAS::getAttributes();
+            //var_dump($attr);
             $_SESSION['user'] = $user;
             require(dirname(__FILE__).'/html/ticket.phml');
         }

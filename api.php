@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL ^ E_NOTICE);
 header("Content-Type: text/json; charset=UTF-8");
 
 $localurl = $_SERVER['HTTPS']?'https://':'http://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];

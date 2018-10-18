@@ -14,6 +14,7 @@ class HDUCAS {
         phpCAS::handleLogoutRequests();
         if (phpCAS::isAuthenticated()) {
             $user = phpCAS::getUser();
+            $info = phpCAS::getAttributes();
             $_SESSION['user'] = $user;
             require(dirname(__FILE__).'/html/content.phml');
             //echo eval('echo "'.file_get_contents(dirname(__FILE__).'/html/content.phml').'";');

@@ -1,0 +1,206 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #201f3e;
+  letter-spacing: .5px;
+}
+
+.sp-cont--fs {
+  width: 100vw;
+  height: 100vh;
+}
+
+.sp-flex {
+  display: flex;
+}
+.sp-flex--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-off-white {
+  background: #f2eff8;
+}
+
+.sp-patient-card {
+  position: relative;
+  padding: 1.666em;
+  background: #fff;
+  box-shadow: 0px 10px 40px -20px rgba(0, 0, 0, 0.5);
+}
+.sp-patient-card__details {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: grid;
+}
+.sp-patient-card__details label.sp-tooltip {
+  display: none;
+  position: absolute;
+  top: 0px;
+}
+.sp-patient-card__details button:hover label.sp-tooltip {
+  display: block;
+}
+.sp-patient-card__details button {
+  font-size: 16px;
+  background: 0;
+  color: #ddd7dd;
+  transition: background .3s ease;
+}
+.sp-patient-card__details button:hover {
+  color: #201f3e;
+  background: #dbd4db;
+}
+.sp-patient-card header h2 {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px #201f3e solid;
+}
+.sp-patient-card header time {
+  font-size: 12px;
+  opacity: .5;
+}
+.sp-patient-card main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1.666em;
+}
+.sp-patient-card main .sp-pid__elem {
+  padding: .5em;
+}
+.sp-patient-card main .sp-pid__elem .sp-pid__label {
+  font-size: 8px;
+  font-weight: bold;
+  display: inline-block;
+  opacity: .5;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 600px) {
+  .sp-patient-card main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.sp-patient-card footer {
+  margin-top: 1.666em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.sp-patient-card footer .sp-btn {
+  flex: 1;
+  margin: 0px .25em;
+  transition: .2s all ease;
+}
+
+.sp-tier--no-tier {
+  border-left: #dbd4db 3px solid;
+}
+.sp-tier--no-tier::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  background: #dbd4db;
+  filter: blur(2px);
+  opacity: .5;
+}
+
+.sp-tier--tier-1 {
+  border-left: #07EBC0 3px solid;
+}
+.sp-tier--tier-1::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  background: #07EBC0;
+  filter: blur(2px);
+  opacity: .5;
+}
+
+.sp-tier--tier-2 {
+  border-left: #846bc0 3px solid;
+}
+.sp-tier--tier-2::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  background: #846bc0;
+  filter: blur(2px);
+  opacity: .5;
+}
+
+.sp-tier--tier-3 {
+  border-left: #FF0055 3px solid;
+}
+.sp-tier--tier-3::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  background: #FF0055;
+  filter: blur(2px);
+  opacity: .5;
+}
+
+.sp-btn {
+  border: 0px;
+  padding: 1em 1.666em;
+}
+.sp-btn--primary {
+  background-color: #dbd4db;
+}
+.sp-btn--primary:hover {
+  background: #d4ccd4;
+  cursor: pointer;
+}
+.sp-btn--secondary {
+  background-color: #00d5ff;
+}
+.sp-btn--secondary:hover {
+  background: #00c8f0;
+  cursor: pointer;
+}
+.sp-btn--success {
+  background-color: #07EBC0;
+}
+.sp-btn--success:hover {
+  background: #07dcb4;
+  cursor: pointer;
+}
+.sp-btn--warning {
+  background-color: #f4c3a2;
+}
+.sp-btn--warning:hover {
+  background: #f2ba94;
+  cursor: pointer;
+}
+.sp-btn--danger {
+  background-color: #FF0055;
+}
+.sp-btn--danger:hover {
+  background: #f00050;
+  cursor: pointer;
+}

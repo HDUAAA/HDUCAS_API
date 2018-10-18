@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>杭电同步登陆DEMO</title>
+    <script src="js/fontawesome.js"></script>
+    <link rel="stylesheet" href="css/reset.min.css" />
+    <link rel="stylesheet" href="css/ticket.css" />
+</head>
+
+<body>
+    <div class="sp-cont sp-cont--fs sp-flex sp-flex--center sp-off-white">
+        <div class="sp-patient-card sp-tier--tier-3">
+            <div class="sp-patient-card__details">
+                <button class="sp-btn sp-btn--primary"> <i class="fa fa-id-card" aria-hidden="true"></i> 
+                </button>
+                <button class="sp-btn sp-btn--primary"> <i class="fa fa-registered" aria-hidden="true"></i> 
+                </button>
+            </div>
+            <header>
+                <h2 class="sp-patient-card__reason">Positive Screen</h2>:
+                <time>2017-09-03T15:51:59Z</time>
+            </header>
+            <main class="sp-patient-card__pid">
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">姓名</label>
+                    <h4 class="sp-pid__detail">Doe, Jane</h4>
+                </div>
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">学号</label>
+                    <h4 class="sp-pid__detail">35</h4>
+                </div>
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">性别</label>
+                    <h4 class="sp-pid__detail">F</h4>
+                </div>
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">入学年份</label>
+                    <h4 class="sp-pid__detail"></h4>
+                </div>
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">班级号</label>
+                    <h4 class="sp-pid__detail">3</h4>
+                </div>
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">学院</label>
+                    <h4 class="sp-pid__detail">12390ED</h4>
+                </div>
+                <div class="sp-pid__elem">
+                    <label class="sp-pid__label">Chief Complaint</label>
+                    <h4 class="sp-pid__detail">Pulminary Embolism</h4>
+                </div>
+            </main>
+            <footer>
+                <button class="sp-btn sp-btn--primary"><a href="./api.php">JSON格式数据</a></button>
+                <button class="sp-btn sp-btn--primary"><a href="./index.php">返回主界面</a></button>
+                <button class="sp-btn sp-btn--primary"><a href="./index.php?act=logout" target="_self">退出登陆</a></button>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

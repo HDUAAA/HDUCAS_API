@@ -1,12 +1,12 @@
 <?php
-class mCAS {
+class HDUCAS {
 
     /**
      * CAS互联登录协议
      * @return null
      */
     public function CASLogin() {
-        include(dirname(__FILE__).'/CAS-1.3.5/CAS.php');
+        include(dirname(__FILE__).'/CAS/CAS.php');
         //phpCAS::setDebug();
         phpCAS::client(CAS_VERSION_2_0, "cas.hdu.edu.cn", 80, "cas");
         phpCAS::setNoCasServerValidation();
@@ -27,7 +27,7 @@ class mCAS {
      * @return null
      */
     public function CASLogout() {
-        include(dirname(__FILE__).'/CAS-1.3.5/CAS.php');
+        include(dirname(__FILE__).'/CAS/CAS.php');
         phpCAS::client(CAS_VERSION_2_0, "cas.hdu.edu.cn", 80, "cas");
         phpCAS::logout( array( 'url' => $_SERVER['HTTP_REFERER']));
         session_destroy();
@@ -37,11 +37,11 @@ class mCAS {
 
 header("Content-Type: text/html; charset=UTF-8");
 if (@$_REQUEST['act'] == 'logout') {
-	$cas = new mCAS();
+	$cas = new HDUCAS();
 	$cas->CASLogout();
 }
 else if (@$_REQUEST['act'] == 'login') {
-	$cas = new mCAS();
+	$cas = new HDUCAS();
 	$cas->CASLogin();
 }
 else {

@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE); 
 class HDUCAS {
 
     /**
@@ -45,5 +46,5 @@ else if (@$_REQUEST['act'] == 'login') {
 	$cas->CASLogin();
 }
 else {
-	echo "欢迎使用杭电CAS登陆测试程序，点此<a href='./index.php?act=login' target='_self'>登陆</a>。";
+    echo file_get_contents(dirname(__FILE__).'/html/index.phml');
 }

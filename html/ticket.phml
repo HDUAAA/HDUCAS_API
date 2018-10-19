@@ -1,3 +1,15 @@
+<?php
+$hdusso_name = !empty(@$_COOKIE['hdusso_name']) ? $_COOKIE['hdusso_name'] : null;
+$hdusso_sid = !empty(@$_COOKIE['hdusso_sid']) ? $_COOKIE['hdusso_sid'] : null;
+$hdusso_sex = !empty(@$_COOKIE['hdusso_sex']) ? $_COOKIE['hdusso_sex'] : null;
+$hdusso_institute = !empty(@$_COOKIE['hdusso_institute']) ? $_COOKIE['hdusso_institute'] : null;
+$hdusso_class = !empty(@$_COOKIE['hdusso_class']) ? $_COOKIE['hdusso_class'] : null;
+if ($hdusso_name == null || $hdusso_sid == null) { //仅对用户ID进行强制校验，避免由于其他字段空值时无法登陆
+	$isLogin = false;
+} else {
+	$isLogin = true;
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -23,42 +35,43 @@
                 <!--<time>2017-09-03T15:51:59Z</time>-->
             </header>
             <main class="sp-patient-card__pid">
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">姓名</label>
-                    <h4 class="sp-pid__detail">丁乃文</h4>
-                </div>
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">学号</label>
-                    <h4 class="sp-pid__detail"><?php echo $user?></h4>
-                </div>
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">性别</label>
-                    <h4 class="sp-pid__detail">F</h4>
-                </div>
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">入学年份</label>
-                    <h4 class="sp-pid__detail"></h4>
-                </div>
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">班级号</label>
-                    <h4 class="sp-pid__detail">3</h4>
-                </div>
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">学院</label>
-                    <h4 class="sp-pid__detail">12390ED</h4>
-                </div>
-                <div class="sp-pid__elem">
-                    <label class="sp-pid__label">Chief Complaint</label>
-                    <h4 class="sp-pid__detail">Pulminary Embolism</h4>
-                </div>
+                <?php
+                    if (!$isLogin) {
+                        header("Location: "."./api.php");
+                    } else {
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">姓名</label><h4 class="sp-pid__detail">'.$hdusso_name.'</h4></div>'; 
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">学号</label><h4 class="sp-pid__detail">'.$hdusso_sid.'</h4></div>';
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">性别</label><h4 class="sp-pid__detail">'.$hdusso_sex.'</h4></div>';
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">入学年份</label><h4 class="sp-pid__detail">20'.substr($hdusso_sid,0,2).'</h4></div>';
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">班级号</label><h4 class="sp-pid__detail">'.$hdusso_class.'</h4></div>';
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">学院</label><h4 class="sp-pid__detail">'.$hdusso_institute.'</h4></div>';
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">状态</label><h4 class="sp-pid__detail">已获取到数据</h4></div>';
+                    }
+                ?>
             </main>
             <footer>
-                <button class="sp-btn sp-btn--primary"><a href="./api.php">JSON格式数据</a></button>
-                <button class="sp-btn sp-btn--primary"><a href="./index.php">返回主界面</a></button>
-                <button class="sp-btn sp-btn--primary"><a href="./index.php?act=logout" target="_self">退出登陆</a></button>
+                <button class="sp-btn sp-btn--primary" onclick="window.location.href='./api.php'">获取数据</button>
+                <button class="sp-btn sp-btn--primary" onclick="window.location.href='./index.php'">返回主界面</button>
+                <button class="sp-btn sp-btn--primary" onclick="logout()">退出登陆</button>
             </footer>
         </div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.min.js"></script>
+    <script>
+        function delCookie(key) {
+            var date = new Date();
+            date.setTime(date.getTime() - 1);
+            var delValue = getCookie(key);
+            if (!!delValue) {
+                document.cookie = key+'='+delValue+';expires='+date.toGMTString();
+            }
+        }
+        function logout(){
+            <?php setcookie ("hducas_sid", "", time() - 3600);?>
+            window.open ("http://cas.hdu.edu.cn/cas/logout", "newwindow", "height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no")
+        }
+    </script>
 </body>
 
 </html>

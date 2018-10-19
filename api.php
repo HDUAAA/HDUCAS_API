@@ -14,6 +14,7 @@ $response = file_get_contents("http://cas.hdu.edu.cn/cas/serviceValidate?ticket=
 
 if(explode('"',explode('value="',$response)[3])[0]==null||explode('"',explode('value="',$response)[3])[0]==""){
 	$userinfo["state"]=403;
+	setcookie("hdusso_state", 403);
 }
 else{
 	$userinfo["state"]=200;
@@ -22,11 +23,17 @@ else{
 	$userinfo["sex"]=explode('"',explode('value="',$response)[6])[0];
 	$userinfo["institute"]=explode('"',explode('value="',$response)[7])[0];
 	$userinfo["class"]=explode('"',explode('value="',$response)[8])[0];
+	setcookie("hdusso_state", 200);
+	setcookie("hdusso_name", $userinfo["name"]);
+  	setcookie("hdusso_sid", $userinfo["sid"]);
+  	setcookie("hdusso_sex", $userinfo["sex"]);
+  	setcookie("hdusso_institute", $userinfo["institute"]);
+  	setcookie("hdusso_class", $userinfo["class"]);
 }
 
 $userinfo = json_encode($userinfo);
 echo $userinfo;
-
+header("Location: "."./index.php?act=login");
 exit();
 
 ?>

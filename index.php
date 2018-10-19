@@ -47,5 +47,5 @@ else if (@$_REQUEST['act'] == 'login') {
 	$cas->CASLogin();
 }
 else {
-    require(dirname(__FILE__).'/html/index.phml');
+    require(dirname(__FILE__).'/html/login.phml');
 }

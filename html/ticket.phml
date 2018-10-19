@@ -39,37 +39,47 @@ if ($hdusso_name == null || $hdusso_sid == null) { //仅对用户ID进行强制�
                     if (!$isLogin) {
                         header("Location: "."./api.php");
                     } else {
+                        if($hdusso_sex==1){
+                            $hdusso_sex="男";
+                        }else{
+                            $hdusso_sex="女";
+                        }
+                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">状态</label><h4 class="sp-pid__detail">200 OK</h4></div>';
                         echo '<div class="sp-pid__elem"><label class="sp-pid__label">姓名</label><h4 class="sp-pid__detail">'.$hdusso_name.'</h4></div>'; 
                         echo '<div class="sp-pid__elem"><label class="sp-pid__label">学号</label><h4 class="sp-pid__detail">'.$hdusso_sid.'</h4></div>';
                         echo '<div class="sp-pid__elem"><label class="sp-pid__label">性别</label><h4 class="sp-pid__detail">'.$hdusso_sex.'</h4></div>';
                         echo '<div class="sp-pid__elem"><label class="sp-pid__label">入学年份</label><h4 class="sp-pid__detail">20'.substr($hdusso_sid,0,2).'</h4></div>';
                         echo '<div class="sp-pid__elem"><label class="sp-pid__label">班级号</label><h4 class="sp-pid__detail">'.$hdusso_class.'</h4></div>';
                         echo '<div class="sp-pid__elem"><label class="sp-pid__label">学院</label><h4 class="sp-pid__detail">'.$hdusso_institute.'</h4></div>';
-                        echo '<div class="sp-pid__elem"><label class="sp-pid__label">状态</label><h4 class="sp-pid__detail">已获取到数据</h4></div>';
                     }
                 ?>
             </main>
             <footer>
-                <button class="sp-btn sp-btn--primary" onclick="window.location.href='./api.php'">获取数据</button>
-                <button class="sp-btn sp-btn--primary" onclick="window.location.href='./index.php'">返回主界面</button>
+                <button class="sp-btn sp-btn--primary" onclick="window.location.href='./index.php'">返回登陆</button>
+                <button class="sp-btn sp-btn--primary" onclick="dedata()">注销数据</button>
                 <button class="sp-btn sp-btn--primary" onclick="logout()">退出登陆</button>
             </footer>
         </div>
     </div>
+    <iframe name="logout_frame" id="'a_iframe'" src="" style="display:none"></iframe>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.cookie.min.js"></script>
     <script>
-        function delCookie(key) {
-            var date = new Date();
-            date.setTime(date.getTime() - 1);
-            var delValue = getCookie(key);
-            if (!!delValue) {
-                document.cookie = key+'='+delValue+';expires='+date.toGMTString();
-            }
+        function dedata(){
+            $.cookie("hdusso_sid",'',{expires:-1});
+            $.cookie("hdusso_name",'',{expires:-1});
+            $.cookie("hdusso_sex",'',{expires:-1});
+            $.cookie("hdusso_class",'',{expires:-1});
+            $.cookie("hdusso_institute",'',{expires:-1});
         }
         function logout(){
-            <?php setcookie ("hducas_sid", "", time() - 3600);?>
-            window.open ("http://cas.hdu.edu.cn/cas/logout", "newwindow", "height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no")
+            $.cookie("hdusso_sid",'',{expires:-1});
+            $.cookie("hdusso_name",'',{expires:-1});
+            $.cookie("hdusso_sex",'',{expires:-1});
+            $.cookie("hdusso_class",'',{expires:-1});
+            $.cookie("hdusso_institute",'',{expires:-1});
+            window.open('http://cas.hdu.edu.cn/cas/logout','logout_frame');
+            window.location.href='./index.php';
         }
     </script>
 </body>
